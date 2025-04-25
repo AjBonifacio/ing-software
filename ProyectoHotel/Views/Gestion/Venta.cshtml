@@ -8,7 +8,7 @@
 <div class="card shadow-sm">
     <div class="card-body  p-3">
         <input type="hidden" value="@Html.DisplayTextFor(model => model.oHabitacion.IdHabitacion)" id="txtidhabitacion" />
-        <h6 class="card-title font-weight-bold text-primary">Resumen de la Habitación</h6>
+        <h6 class="card-title font-weight-bold text-primary">Resumen de la camilla</h6>
 
         <div class="form-row">
             <div class="col-md-3">
@@ -30,7 +30,7 @@
         </div>
         <div class="form-row">
             <div class="col-md-3">
-                <label class="form-text font-weight-bold mb-0">Cliente:</label>
+                <label class="form-text font-weight-bold mb-0">paciente:</label>
                 <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Nombre) @Html.DisplayTextFor(model => model.oCliente.Apellido)</label>
             </div>
             <div class="col-md-3">
@@ -38,7 +38,7 @@
                 <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Documento)</label>
             </div>
             <div class="col-md-3">
-                <label class="form-text font-weight-bold mb-0">Correo:</label>
+                <label class="form-text font-weight-bold mb-0">telefono:</label>
                 <label class="form-text mb-0">@Html.DisplayTextFor(model => model.oCliente.Correo)</label>
             </div>
             <div class="col-md-3">

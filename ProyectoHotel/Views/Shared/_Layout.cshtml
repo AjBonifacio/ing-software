@@ -8,17 +8,37 @@
     <meta name="author" content="">
     <title>SB Admin 2 - Blank</title>
     <!-- Custom fonts for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
     @Styles.Render("~/Content/css")
+
     <style>
         a {
-            cursor:pointer;
+            cursor: pointer;
         }
+
         .dt-bootstrap4 {
             font-size: 14px !important;
         }
+
         .card-footer {
             border-top: 0px !important;
         }
+
+        .bg-gradient-primary,
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            background-image: none !important;
+        }
+
+            .sidebar .nav-link {
+                color: #ffffff !important;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: rgba(255, 255, 255, 0.1) !important;
+                    color: #fbbf24 !important;
+                }
     </style>
 </head>
 <body id="page-top">
@@ -32,9 +52,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Inicio")">
                 <div class="sidebar-brand-icon">
-                    <i class="far fa-building"></i>
+                    <i class="fas fa-hospital"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Mi Hotel</div>
+                <div class="sidebar-brand-text mx-3">Host Hospital</div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -49,12 +69,12 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-concierge-bell"></i>
+                    <i class="fa-solid fa-bed-pulse"></i>
                     <span>Gestion</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="@Url.Action("Recepcion", "Gestion")">Habitaciones</a>
+                        <a class="collapse-item" href="@Url.Action("Recepcion", "Gestion")">Ingreso</a>
                         <a class="collapse-item" href="@Url.Action("Salida", "Gestion")">Salida</a>
                     </div>
                 </div>
@@ -67,15 +87,15 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                            aria-expanded="true" aria-controls="collapseUtilities">
-                            <i class="fas fa-fax"></i>
-                            <span>Tienda</span>
+                           <i class="fa-solid fa-prescription-bottle-medical"></i>
+                            <span>Suplir</span>
                         </a>
                         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                              data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="@Url.Action("Vender", "Tienda")">Vender</a>
+                                <a class="collapse-item" href="@Url.Action("Vender", "Tienda")">Suplir</a>
                                 <h6 class="collapse-header">Registrar:</h6>
-                                <a class="collapse-item" href="@Url.Action("Producto", "Tienda")">Productos</a>
+                                <a class="collapse-item" href="@Url.Action("Producto", "Tienda")">Insumos</a>
                             </div>
                         </div>
                     </li>
@@ -84,12 +104,12 @@
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseamantenimiento"
                            aria-expanded="true" aria-controls="collapseamantenimiento">
-                            <i class="fas fa-fw fa-wrench"></i>
-                            <span>Mantenimiento</span>
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Direccion </span>
                         </a>
                         <div id="collapseamantenimiento" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="@Url.Action("Habitaciones", "Mantenimiento")">Habitaciones</a>
+                                <a class="collapse-item" href="@Url.Action("Habitaciones", "Mantenimiento")">Camillas</a>
                                 <a class="collapse-item" href="@Url.Action("Categoria", "Mantenimiento")">Categoria</a>
                                 <a class="collapse-item" href="@Url.Action("Pisos", "Mantenimiento")">Pisos</a>
                             </div>
@@ -103,13 +123,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReporte"
                    aria-expanded="true" aria-controls="collapseReporte">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fa-solid fa-clipboard"></i>
                     <span>Reportes</span>
                 </a>
                 <div id="collapseReporte" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("Recepciones", "Reporte")">Recepciones</a>
-                        <a class="collapse-item" href="@Url.Action("Productos", "Reporte")">Productos</a>
+                        <a class="collapse-item" href="@Url.Action("Productos", "Reporte")">Insumos</a>
                     </div>
                 </div>
             </li>
@@ -120,7 +140,7 @@
                     <!-- Nav Item - Charts -->
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Usuario","Inicio")">
-                            <i class="fas fa-user-shield"></i>
+                           <i class="fa-solid fa-hospital-user"></i>
                             <span>Usuarios</span>
                         </a>
                     </li>
@@ -132,23 +152,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Cliente","Inicio")">
                     <i class="fas fa-user-friends"></i>
-                    <span>pacientes</span>
+                    <span>Pacientes</span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="https://ouo.io/VRgLgZ" target="_blank">
-                    <i class="fas fa-donate"></i>
-                    <span>Ver Premium =)</span>
-                </a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+         
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -195,7 +206,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span></span>
                     </div>
                 </div>
             </footer>
@@ -229,5 +240,6 @@
     </div>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

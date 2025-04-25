@@ -5,118 +5,178 @@
 }
 
 
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+<!-- Título y toggle de tema -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3"> Dashboard</h1>
+    <div>
+        <span class="me-2">🌞</span>
+        <label class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="themeToggle">
+        </label>
+        <span class="ms-2">🌙</span>
+    </div>
 </div>
-<!-- Content Row -->
-<div class="row">
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-dark shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                            Total Habitaciones
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-dark" id="totalhabitaciones">0</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-black-50"></i>
-                    </div>
-                </div>
+
+<!-- Filtro de piso -->
+<div class="mb-3">
+    <label for="selectPiso" class="form-label">Filtrar por piso:</label>
+    <select id="selectPiso" class="form-select w-auto d-inline-block">
+        <option value="0" selected>Todos</option>
+        <option value="1">Piso 1</option>
+        <option value="2">Piso 2</option>
+        <option value="3">Piso 3</option>
+    </select>
+</div>
+
+<!-- Tarjetas con animación -->
+<div class="row g-3" id="cardsContainer">
+    <div class="col-md-3">
+        <div class="card border-dark shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body text-center">
+                <i class="fas fa-clipboard-list fa-2x text-dark mb-2"></i>
+                <div class="text-muted">Total Camillas</div>
+                <div class="fs-4 fw-bold text-dark" id="totalhabitaciones">0</div>
             </div>
         </div>
     </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Habitaciones Disponibles
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-primary" id="habitacionesdisponibles">0</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-box fa-2x text-primary"></i>
-                    </div>
-                </div>
+    <div class="col-md-3">
+        <div class="card border-success shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body text-center">
+                <i class="fas fa-door-open fa-2x text-success mb-2"></i>
+                <div class="text-muted">Disponibles</div>
+                <div class="fs-4 fw-bold text-success" id="habitacionesdisponibles">0</div>
             </div>
         </div>
     </div>
-
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-danger shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                            Habitaciones Ocupadas
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-danger" id="habitacionesocupadas">0</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-bed fa-2x text-danger"></i>
-                    </div>
-                </div>
+    <div class="col-md-3">
+        <div class="card border-danger shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body text-center">
+                <i class="fa-solid fa-bed-pulse fa-2x text-danger mb-2"></i>
+                <div class="text-muted">Ocupadas</div>
+                <div class="fs-4 fw-bold text-danger" id="habitacionesocupadas">0</div>
             </div>
         </div>
     </div>
-
-    <!-- Pending Requests Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Habitaciones en Limpieza
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-info" id="habitacioneslimpieza">0</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-air-freshener fa-2x text-info"></i>
-                    </div>
-                </div>
+    <div class="col-md-3">
+        <div class="card border-info shadow-sm animate__animated animate__fadeIn">
+            <div class="card-body text-center">
+                <i class="fas fa-broom fa-2x text-info mb-2"></i>
+                <div class="text-muted">Limpieza</div>
+                <div class="fs-4 fw-bold text-info" id="habitacioneslimpieza">0</div>
             </div>
         </div>
     </div>
 </div>
 
-@section scripts{
+<!-- Gráficos -->
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="text-center">Distribución Actual</h5>
+                <canvas id="habitacionesChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-body">
+                <h5 class="text-center">Comparación Visual</h5>
+                <canvas id="habitacionesBar"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"></script>
+
     <script>
+        let chartDonut, chartBar;
 
-        $(document).ready(function () {
-
-            jQuery.ajax({
-                url: '@Url.Action("ListarHabitacion", "Gestion")' + '?idpiso=0',
+        function cargarDatos(idpiso) {
+            $.ajax({
+                url: '@Url.Action("ListarHabitacion", "Gestion")' + '?idpiso=' + idpiso,
                 type: "GET",
-                data: null,
                 dataType: "json",
-                contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (data.data != null) {
-                        $("#totalhabitaciones").text(data.data.length)
-                        $("#habitacionesdisponibles").text(data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 1).length)
-                        $("#habitacionesocupadas").text(data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 2).length)
-                        $("#habitacioneslimpieza").text(data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 3).length)
+                        const disponibles = data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 1).length;
+                        const ocupadas = data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 2).length;
+                        const limpieza = data.data.filter(h => h.oEstadoHabitacion.IdEstadoHabitacion == 3).length;
+
+                        $("#totalhabitaciones").text(data.data.length);
+                        $("#habitacionesdisponibles").text(disponibles);
+                        $("#habitacionesocupadas").text(ocupadas);
+                        $("#habitacioneslimpieza").text(limpieza);
+
+                        actualizarGraficos(disponibles, ocupadas, limpieza);
+                        toastr.success('Datos actualizados correctamente.');
                     }
                 },
-                error: function (error) {
-                    console.log(error)
-                },
-                beforeSend: function () {
+                error: function (err) {
+                    toastr.error('Error al cargar los datos');
+                    console.log(err);
+                }
+            });
+        }
 
+        function actualizarGraficos(d, o, l) {
+            const data = [d, o, l];
+
+            if (chartDonut) chartDonut.destroy();
+            if (chartBar) chartBar.destroy();
+
+            chartDonut = new Chart(document.getElementById("habitacionesChart"), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Disponibles', 'Ocupadas', 'Limpieza'],
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#198754', '#dc3545', '#0dcaf0'],
+                    }]
                 },
+                options: {
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
             });
 
-        })
+            chartBar = new Chart(document.getElementById("habitacionesBar"), {
+                type: 'bar',
+                data: {
+                    labels: ['Disponibles', 'Ocupadas', 'Limpieza'],
+                    datasets: [{
+                        label: 'Cantidad',
+                        data: data,
+                        backgroundColor: ['#198754', '#dc3545', '#0dcaf0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        }
 
+        $(document).ready(function () {
+            cargarDatos(0);
 
+            $("#selectPiso").change(function () {
+                const piso = $(this).val();
+                cargarDatos(piso);
+            });
+
+            // Toggle tema claro/oscuro
+            $('#themeToggle').on('change', function () {
+                $('body').toggleClass('bg-dark text-white');
+                $('.card').toggleClass('bg-dark text-white border-white');
+            });
+        });
     </script>
 }
