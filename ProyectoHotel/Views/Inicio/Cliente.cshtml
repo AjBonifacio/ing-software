@@ -7,8 +7,8 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3 bg-primary">
-        <h6 class="m-0 font-weight-bold text-white">Lista de Clientes</h6>
+    <div class="card-header py-3" style="background-color: #198754 !important; color: white !important;">
+        <h6 class="m-0 font-weight-bold text-white">Lista de Pacientes</h6>
     </div>
     <div class="card-body">
         <div class="row">
@@ -27,7 +27,7 @@
                                 <th>Nro Documento</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Correo</th>
+                                <th>Teléfono</th>
                                 <th>Estado</th>
                                 <th></th>
                             </tr>
@@ -38,7 +38,7 @@
                                 <th>Nro Documento</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Correo</th>
+                                <th>Teléfono</th>
                                 <th>Estado</th>
                                 <th></th>
                             </tr>
@@ -58,8 +58,8 @@
 <div class="modal fade" id="FormModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Cliente</h5>
+            <div class="card-header py-3" style="background-color: #198754 !important; color: white !important;">
+                <h5 class="modal-title" id="exampleModalLabel">Paciente</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -72,9 +72,8 @@
                             <div class="form-group">
                                 <label for="txtdescripcion">Tipo Documento:</label>
                                 <select class="form-control" id="cbotipodocumento">
-                                    <option value="DNI">DNI</option>
-                                    <option value="PASAPORTE">PASAPORTE</option>
-                                    <option value="CARNET EXTRANJERIA">CARNET EXTRANJERIA</option>
+                                    <option value="Cédula">Cédula</option>
+                                    <option value="Pasaporte">Pasaporte</option>
                                 </select>
                             </div>
                         </div>
@@ -106,7 +105,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="txtdescripcion">Correo:</label>
+                                <label for="txtdescripcion">Teléfono:</label>
                                 <input type="text" class="form-control required" id="txtcorreo" name="descripcion" autocomplete="off">
                             </div>
                         </div>
